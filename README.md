@@ -2,12 +2,12 @@
 
 ## Idea
 
-If I think of something i want to remember, an idea for example, I should be able to go to todo-app.com and simply add the item as a todo
+If I think of something i want to remember, an idea for example, I should be able to go to todo-app.com, on any machine, and simply add the item as a todo
 
 ## Base Features
 
 + private use website
-+ some kind of password to enter
++ some kind of authorization
 + mobile first
 + task title and optional task description
 
@@ -31,7 +31,7 @@ repeat 2 through 4
 
 + task flags:
 
-    Prioritize, time created
+    Prioritize, time created, due date?
 
 + sort list by flags
 + create new lists
@@ -40,4 +40,7 @@ repeat 2 through 4
 ## Thoughts
 
 + how to host?
-+ code needs to be perfect. subject to change therefore needs to be extensible and scalable. follow solid design principles. component principles.
++ I want this app to be radically different, just for the sake of creativity
+    + unique style?
+    + some kind of unique feature?
+    + something genius
