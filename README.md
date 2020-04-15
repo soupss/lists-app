@@ -4,7 +4,7 @@
 
 If I think of something i want to remember, an idea for example, I should be able to go to lists-app.com, on any machine, and simply add the item to one of my lists.
 
-Lists is just a way to organize the items. Example of lists: 
+Lists is just a way to organize the items. Example of list names: 
 + Todo
 + Remember
 + Ideas
