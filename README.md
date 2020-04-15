@@ -1,15 +1,20 @@
-# Todo App
+# Lists App
 
 ## Idea
 
-If I think of something i want to remember, an idea for example, I should be able to go to todo-app.com, on any machine, and simply add the item as a todo
+If I think of something i want to remember, an idea for example, I should be able to go to lists-app.com, on any machine, and simply add the item to one of my lists.
+
+Lists is just a way to organize the items. Example of lists: 
++ Todo
++ Remember
++ Ideas
 
 ## Base Features
 
 + private use website
 + some kind of authorization
 + mobile first
-+ task title and optional task description
++ item title and optional item description
 
 ## Tools
 
@@ -29,7 +34,7 @@ repeat 2 through 4
 
 ## Future Features
 
-+ task flags:
++ item flags:
 
     Prioritize, time created, due date?
 
