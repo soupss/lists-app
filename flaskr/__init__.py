@@ -10,9 +10,16 @@ class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     task = db.Column(db.String(100), nullable=False)
     desc = db.Column(db.String(1000), nullable=True)
+    list_id = db.Column(db.Integer, db.ForeignKey('person.id'), nullable=False)
 
     def __repr__(self):
         return f'<{self.task}:{self.desc}>'
+
+
+class List(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    items = db.relationship('Item', backref='list', lazy=True)
 
 
 @app.route('/')
