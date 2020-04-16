@@ -1,9 +1,17 @@
 {% extends "base.html" %}
-
 {% block content %}
-<ul>
-    <li>todo 1</li>
-    <li>todo 2</li>
-    <li>todo 3</li>
-</ul>
+<div class="container mx-auto w-25">
+    <ul class="list-group">
+	{% for item in items %}
+	<li class="list-group-item">
+	    <a href="#{{ item.id }}" data-toggle="collapse">
+		{{ item.title }}
+	    </a>
+	    <div id="{{ item.id }}" class="collapse">
+		<small class="text-mute mt-2" style="display: block;">{{ item.date_posted }}</small>
+		{{ item.desc }}
+	    </div>
+	</li>{% endfor %}
+    </ul>
+</div>
 {% endblock %}
