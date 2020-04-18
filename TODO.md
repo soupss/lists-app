@@ -1,3 +1,5 @@
-1. Save lists and items to database
-2. Display lists and items to view from database
-3. Style lists and items correctly
+- [x] Save lists to database
+- [x] Display lists to view
+- [ ] Save items to database
+- [ ] Display items to view
+- [ ] Style lists and items correctly
