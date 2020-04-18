@@ -2,7 +2,7 @@
 
 ## Idea
 
-If I think of something i want to remember, an idea for example, I should be able to go to lists-app.com, on any machine, and simply add the item to one of my lists.
+If I think of something i want to remember, an idea for example, I should be able to go to lists-app.com (or something), on any machine, and simply add the item to one of my lists.
 
 Lists is just a way to organize the items. Example of list names: 
 + Todo
@@ -23,15 +23,6 @@ Lists is just a way to organize the items. Example of list names:
 + a server (hosting?)
 + bootstrap
 
-## Priority list
-
-1. setup database and app logic
-2. improve styling if necessary
-3. refactor code
-4. add new feature
-
-repeat 2 through 4
-
 ## Future Features
 
 + item flags:
@@ -45,7 +36,3 @@ repeat 2 through 4
 ## Thoughts
 
 + how to host?
-+ I want this app to be radically different, just for the sake of creativity
-    + unique style?
-    + some kind of unique feature?
-    + something genius
