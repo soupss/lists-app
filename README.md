@@ -35,4 +35,4 @@ Lists is just a way to organize the items. Example of list names:
 
 ## Thoughts
 
-+ how to host?
++ how to deploy?
