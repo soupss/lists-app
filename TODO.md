@@ -1,5 +1,14 @@
-- [x] Save lists to database
-- [x] Display lists to view
-- [ ] Save items to database
-- [ ] Display items to view
-- [ ] Style lists and items correctly
++ Manipulate database from view
+
+    - [ ] Delete items
+    - [ ] Delete lists
+    - [ ] Rename lists
+    - [ ] Change item title and description
+
++ Style
+
+    - [ ] Dynamic chevrons on dropdown
+
+- [ ] Display time correctly
+- [ ] Built-in "Important" list. Items signified with a star
+- [ ] Sort list by time posted

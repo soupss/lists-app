@@ -8,7 +8,7 @@ class List(db.Model):
     items = db.relationship('Item', backref='list', lazy=True)
 
     def __repr__(self):
-        return f"List('{self.name}')"
+        return f"<List('{self.id}', '{self.name}', '{self.items}]')>"
 
 
 class Item(db.Model):
@@ -20,4 +20,4 @@ class Item(db.Model):
     list_id = db.Column(db.Integer, db.ForeignKey('list.id'), nullable=False)
 
     def __repr__(self):
-        return f"Item('{self.title}', '{self.date_posted}', '{self.list_id}')"
+        return f"<Item('{self.title}', '{self.date_posted}', '{self.list_id}')>"
