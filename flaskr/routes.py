@@ -1,4 +1,3 @@
-from datetime import datetime
 from flask import render_template, request
 from flaskr import app, db
 from flaskr.models import List, Item
@@ -12,4 +11,4 @@ def index():
         db.session.add(list)
         db.session.commit()
     lists = List.query.all()
-    return render_template('index.html', lists=lists)
+    return render_template('home.html', lists=lists)

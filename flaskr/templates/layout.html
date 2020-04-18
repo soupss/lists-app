@@ -3,6 +3,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/main.css">
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -11,11 +14,17 @@
     
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <!-- Popper.js -->
+    <!-- Bootstrap Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-q6e9rhvbiyzfjoft+2mjbhaewldlvi9ioyy5n3zv9zzttmi3uksdqrvvoxmfooao" crossorigin="anonymous"></script>
-    <!-- jQuery -->
+    <!-- Bootstrap jQuery -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/9349fc5a1a.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    {% block content %}{% endblock %}
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+	<div class="navbar-brand col-sm mr-0" href="{{ url_for('index') }}">Lists App</div>
+    </nav>
+    {% block content %}
+    {% endblock %}
 </body>
