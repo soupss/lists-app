@@ -12,5 +12,6 @@
 - [ ] Display time correctly
 - [ ] Built-in "Important" list. Items signified with a star
 - [ ] Sort list by time posted
+- [ ] Add authentication
 
 - [ ] **Deploy!**
