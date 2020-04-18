@@ -14,7 +14,7 @@ class List(db.Model):
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    desc = db.Column(db.Text, nullable=True)
+    description = db.Column(db.Text, nullable=True)
     date_posted = db.Column(db.DateTime(), nullable=False,
                             default=datetime.utcnow)
     list_id = db.Column(db.Integer, db.ForeignKey('list.id'), nullable=False)

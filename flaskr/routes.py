@@ -1,29 +1,15 @@
 from datetime import datetime
-from flask import render_template
-from flaskr import app
-
-items = [
-    {
-        'title': 'Clean the house',
-        'desc': 'Bla bla bla bla bla',
-        'id': 'demo',
-        'date_posted': datetime.utcnow(),
-    },
-    {
-        'title': 'Walk the dog',
-        'desc': 'Bla bla bla bla bla',
-        'id': 'demo2',
-        'date_posted': datetime.utcnow(),
-    },
-    {
-        'title': 'Make an app',
-        'desc': 'Bla bla bla bla bla',
-        'id': 'demo3',
-        'date_posted': datetime.utcnow(),
-    }
-]
+from flask import render_template, request
+from flaskr import app, db
+from flaskr.models import List, Item
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', items=items)
+    if request.method == 'POST':
+        list_name = request.form['list']
+        list = List(name=list_name)
+        db.session.add(list)
+        db.session.commit()
+    lists = List.query.all()
+    return render_template('index.html', lists=lists)

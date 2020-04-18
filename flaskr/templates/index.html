@@ -1,17 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container mx-auto w-25">
+<div class="container mx-auto">
+    <ul class="list-group">
+	{% for list in lists %}
+	    <li class="list-group-item">
+		{{ list.name }}
+	    </li>
+	{% endfor %}
+	<li class="list-group-item">
+	    <form method='POST'>
+		<input type="text" name="list" placeholder="Create List">
+		<input type="submit" name="list" value="Submit">
+	    </form>
+	</li>
+    </ul>
     <ul class="list-group">
 	{% for item in items %}
-	<li class="list-group-item">
-	    <a href="#{{ item.id }}" data-toggle="collapse">
-		{{ item.title }}
-	    </a>
-	    <div id="{{ item.id }}" class="collapse">
-		<small class="text-mute mt-2" style="display: block;">{{ item.date_posted }}</small>
-		{{ item.desc }}
-	    </div>
-	</li>{% endfor %}
+	    <li class="list-group-item">
+		<a href="#{{ item.id }}" data-toggle="collapse">
+		    {{ item.title }}
+		</a>
+		<div id="{{ item.id }}" class="collapse">
+		    <small class="text-mute mt-2" style="display: block;">{{ item.date_posted }}</small>
+		    {{ item.desc }}
+		</div>
+	    </li>
+	{% endfor %}
     </ul>
 </div>
 {% endblock %}
