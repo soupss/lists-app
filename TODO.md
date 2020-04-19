@@ -9,6 +9,6 @@
 
     - [ ] Dynamic chevrons on dropdown
 
-- [ ] Display time correctly
+- [x] Display time correctly
 - [ ] Built-in "Important" list. Items signified with a star
 - [ ] Sort list by time posted

@@ -55,11 +55,13 @@
 			    </svg>
 			    {% endif %}
 			</span>
-			<span class="text-left">{{ item.title }}</span>
-			<small class="text-right text-muted">{{ item.date_posted }}</small>
+			<span class="pr-2">{{ item.title }}</span>
+			<small class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small>
+			{% if item.description %}
 			<div class="collapse" id="id{{ item.id}}">
 			    <p>{{ item.description }}</p>
 			</div>
+			{% endif %}
 		    </li>
 		</a>
 		{% endfor %}
