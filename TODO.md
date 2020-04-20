@@ -1,14 +1,15 @@
 + Manipulate database from view
 
     - [ ] Delete items
-    - [ ] Delete lists
-    - [ ] Rename lists
+    - [x] Delete lists
+    - [x] Rename lists
     - [ ] Change item title and description
 
 + Style
 
-    - [ ] Interactive icons
+    - [x] Interactive icons
 
+- [x] Use RESTful route convention
 - [x] Display time correctly
 - [ ] Display time relatively
 
