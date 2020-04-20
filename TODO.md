@@ -27,6 +27,7 @@
 
 - [ ] Sort list by time posted
 - [ ] Add authentication
+- [ ] Make ui mobile-friendly
 
 #### Final step
 
