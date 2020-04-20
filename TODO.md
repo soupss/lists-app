@@ -7,21 +7,27 @@
 
 + Style
 
-    - [x] Interactive icons
+    - [ ] Interactive dropdown icon
 
-- [x] Use RESTful route convention
+- [x] Use RESTful route naming convention
 - [x] Display time correctly
 - [ ] Display time relatively
 
-    '3 Days ago' instead of '04/20/20'
-    Display absolute time when item is older than 1 week
+    + '3 Days ago' instead of '04/20/20'
+    + Display absolute time when item is older than 1 week
 
 - [ ] Better route variables. 
 
-	'list_id' & 'item_id' instead of 'id'
+    'list_id' & 'item_id' instead of 'id'
 
 - [ ] Built-in "Important" list. Items signified with a star
+
+    + List and item models currently have a one to many relationship. That needs to be changed.
+    + Show which list the item is from when displayed in the favorite list.
+
 - [ ] Sort list by time posted
 - [ ] Add authentication
+
+#### Final step
 
 - [ ] **Deploy!**
