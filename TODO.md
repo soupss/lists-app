@@ -24,6 +24,7 @@
 
     + ~~List and item models currently have a one to many relationship. That needs to be changed.~~
     + favorite list does not need to be saved to db
+    + create new templates: 'list', 'favorite-list'
     + Show which list the item is from when displayed in the favorite list.
 
 - [ ] Sort list by time posted
@@ -33,3 +34,8 @@
 #### Final step
 
 - [ ] **Deploy!**
+
+## Issues
+
+1. home.html is too long, split up in templates
+2. a lot of repeated code in html files
