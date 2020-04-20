@@ -20,9 +20,10 @@
 
     'list_id' & 'item_id' instead of 'id'
 
-- [ ] Built-in "Important" list. Items signified with a star
+- [ ] Built-in "Favorites" list. Items signified with a star
 
-    + List and item models currently have a one to many relationship. That needs to be changed.
+    + ~~List and item models currently have a one to many relationship. That needs to be changed.~~
+    + favorite list does not need to be saved to db
     + Show which list the item is from when displayed in the favorite list.
 
 - [ ] Sort list by time posted
