@@ -1,9 +1,9 @@
 + Manipulate database from view
 
-    - [ ] Delete items
+    - [x] Delete items
     - [x] Delete lists
     - [x] Rename lists
-    - [ ] Change item title and description
+    - [x] Change item title and description
 
 + Style
 
@@ -15,6 +15,10 @@
 
     '3 Days ago' instead of '04/20/20'
     Display absolute time when item is older than 1 week
+
+- [ ] Better route variables. 
+
+	'list_id' & 'item_id' instead of 'id'
 
 - [ ] Built-in "Important" list. Items signified with a star
 - [ ] Sort list by time posted
