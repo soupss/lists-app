@@ -12,18 +12,23 @@ def create_list():
     return redirect(url_for('list', id=list.id))
 
 
-@app.route('/<id>', methods=['GET', 'POST'])
+@app.route('/list/<id>', methods=['GET', 'POST'])
 def list(id):
-    if request.method == 'POST':
-        item = Item(title=request.form['title'], description=request.form['description'], list_id=id)
+    if request.method == 'POST':  # create item
+        title = request.form['title'].strip()
+        description = request.form['description'].strip()
+        item = Item(title=title, description=description, list_id=id)
         db.session.add(item)
         db.session.commit()
 
-    selected_list = List.query.get(id)
     lists = List.query.all()
-    return render_template('home.html', lists=lists, selected_list=selected_list)
+    if id == 'none':
+        return render_template('home.html', lists=lists)
+    else:
+        selected_list = List.query.get_or_404(id)
+        return render_template('home.html', lists=lists, selected_list=selected_list)
 
 
 @app.route('/', methods=['GET'])
 def home():
-    return redirect(url_for('list', id=List.query.first().id))
+    return redirect(url_for('list', id='none'))

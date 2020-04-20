@@ -7,13 +7,11 @@
 		<ul class="nav flex-column sidebar-list">
 		    {% for list in lists %}
 		    <li class="nav-item">
-			<a class="nav-link" href="/{{ list.id }}" style="color: #333;">
-			    <span class="mr-2">
-				<svg class="bi bi-list-ul" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-				    <path fill-rule="evenodd" d="M5 11.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm-3 1a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-				</svg>
-			    </span>
-			    {{ list.name }}
+			<a class="nav-link" href="{{ url_for('list', id=list.id) }}" style="color: #333;">
+			    <svg class="bi bi-list-ul" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M5 11.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm-3 1a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+			    </svg>
+			    <span class="ml-2"> {{ list.name }} </span>
 			</a>
 		    </li>
 		    {% endfor %}
@@ -36,52 +34,96 @@
 	    </div>
 	</nav>
 	<main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" role="main">
-	    <h5 class="ml-3 font-weight-normal">
-		{{ selected_list.name }}
+	    {% if not selected_list %}
+	    <div class="alert alert-warning" role="alert">
+		No list selected
+	    </div>
+	    {% else %}
+	    <h5 class="m-3 font-weight-normal">
+		<span class="m-2">{{ selected_list.name }}</span>
+		<div class="dropdown d-inline">
+		    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<svg class="bi bi-three-dots" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			    <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" clip-rule="evenodd"/>
+			</svg>
+		    </a>
+
+		    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			<span class="dropdown-item-text text-center" href="#">List Options</span>
+			<div class="dropdown-divider"></div>
+			<a class="dropdown-item" id="rename" href="#">
+			    <!-- Pen icon -->
+			    <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
+				<path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
+			    </svg>
+			    <small class="text-muted">Rename</small>
+			</a>
+			<a class="dropdown-item" id="delete" href="#">
+			    <!-- Trash bin icon -->
+			    <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+				<path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
+			    </svg>
+			    <small class="text-muted">Delete</small>
+			</a>
+		    </div>
+		</div>
 	    </h5>
 	    <ul class="list-group list-group-flush">
 		{% if selected_list.items %}
 		{% for item in selected_list.items %}
 		<a class="text-decoration-none" data-toggle="collapse" href="#id{{ item.id}}" aria-expanded="false" aria-controls="id{{ item.id}}" style="color: #333;">
 		    <li class="list-group-item">
-			<span class="mr-2">
+			<span class="mr-2">  <!-- dropdown icon -->
 			    {% if item.description %}
 			    <svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
 			    </svg>
 			    {% else %}
-			    <svg class="bi bi-dash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			    <svg class="bi bi-dash" width="1em" height="1em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
 			    </svg>
 			    {% endif %}
 			</span>
 			<span class="pr-2">{{ item.title }}</span>
-			<small class="text-muted">{{ item.date_posted.strftime('%Y-%m-%d') }}</small>
+			<small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ item.date_posted.strftime('%X') }}">
+			    {{ item.date_posted.strftime('%x') }}
+			</small>
+			<span class="float-right">  <!-- star icon -->
+			    {% if item.favorite %}
+			    <svg class="bi bi-star-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+			    </svg>
+			    {% else %}
+			    <svg class="bi bi-star" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 00-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 00-.163-.505L1.71 6.745l4.052-.576a.525.525 0 00.393-.288l1.847-3.658 1.846 3.658a.525.525 0 00.393.288l4.052.575-2.906 2.77a.564.564 0 00-.163.506l.694 3.957-3.686-1.894a.503.503 0 00-.461 0z" clip-rule="evenodd"/>
+			    </svg>
+			    {% endif %}
+			</span>
 			{% if item.description %}
 			<div class="collapse" id="id{{ item.id}}">
-			    <p>{{ item.description }}</p>
+			    <p class="mt-3 mb-0">{{ item.description }}</p>
 			</div>
 			{% endif %}
 		    </li>
 		</a>
 		{% endfor %}
 		{% else %}
-		<p><em>This list is empty</em></p>
+		<div class="alert alert-primary m-3" role="alert">This list is empty</div>
 		{% endif %}
 	    </ul>
 	    <form method='POST'>
-		<p class="mt-4 text-center">
-		    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#createItemCard" aria-expanded="false" aria-controls="createItemCard">
-			<svg class="bi bi-file-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-			    <path d="M9 1H4a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V8h-1v5a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1h5V1z"/>
-			    <path fill-rule="evenodd" d="M13.5 1a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-2a.5.5 0 010-1H13V1.5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
-			    <path fill-rule="evenodd" d="M13 3.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
+		<p>
+		    <button class="btn btn-primary m-3" type="button" data-toggle="collapse" data-target="#createItemCard" aria-expanded="false" aria-controls="createItemCard">
+			<svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
 			</svg>
-			<span class="ml-2">New List Item</span>
+			<span class="m-2">New List Item</span>
 		    </button>
 		</p>
-		<div class="collapse" id="createItemCard">
-		    <div class="card card-body mx-auto" style="width: 60%;">
+		<div class="collapse ml-3" id="createItemCard">
+		    <div class="card card-body" style="width: 60%;">
 			<div class="form-group">
 			    <label for="title">Title</label>
 			    <input type="text" class="form-control" placeholder="Enter title" name="title" id="title" required>
@@ -91,13 +133,19 @@
 			    <textarea class="form-control" placeholder="Enter description" name="description" id="description" rows="2"></textarea>
 			    <small class="form-text text-muted">Description is optional</small>
 			</div>
-			<button class="btn btn-primary" type="submit">
+			<button class="btn btn-primary mx-auto" type="submit">
+			    <svg class="bi bi-file-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path d="M9 1H4a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V8h-1v5a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1h5V1z"/>
+				<path fill-rule="evenodd" d="M13.5 1a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-2a.5.5 0 010-1H13V1.5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+				<path fill-rule="evenodd" d="M13 3.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
+			    </svg>
 			    <span class="pl-1">Create Item</span>
 			</button>
 		    </div>
 		</div>
 	    </form>
 	</main>
+	{% endif %}
     </div>
 </div>
 {% endblock %}

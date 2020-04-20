@@ -16,6 +16,43 @@
     padding: 0;
 }
 
+a {
+    outline: none;
+}
+
+a.nav-link:hover {
+    background-color: white;
+}
+
 li.nav-item:first-child {
     margin-top: 40px;
+}
+
+a:last-child li.list-group-item {
+    border-bottom: none;
+}
+
+li.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-toggle {
+    color: #333;
+}
+
+.dropdown-toggle:after {
+    content: none !important;
+}
+
+.dropdown-toggle:hover {
+    text-decoration: none;
+    color: grey;
+}
+
+#rename:hover {
+    color: #ffad33;
+}
+
+#delete:hover {
+    color: #ff3333;
 }
