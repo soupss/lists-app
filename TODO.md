@@ -39,6 +39,13 @@
 
     mostly sidebar, maybe proportion issues
 
+**- [ ] Add User Authentication with accounts**
+
+    Big feature. includes:
+
+    + register + login
+    + request a new password
+
 #### Final step
 
 - [ ] **Deploy!**
