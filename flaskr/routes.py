@@ -20,7 +20,7 @@ def root():
 @app.route('/lists')
 def home():
     lists = List.query.all()
-    return render_template('home.html', lists=lists, show_fav=has_favorite())
+    return render_template('list.html', lists=lists, show_fav=has_favorite())
 
 
 # show specific list
@@ -28,7 +28,7 @@ def home():
 def show_list(id):
     lists = List.query.all()
     selected_list = List.query.get_or_404(id)
-    return render_template('home.html', lists=lists, selected_list=selected_list, show_fav=has_favorite())
+    return render_template('list.html', lists=lists, selected_list=selected_list, show_fav=has_favorite())
 
 
 # show favorite list

@@ -57,13 +57,13 @@ li.list-group-item:hover {
 }
 
 #edit:hover {
-    color: #ffad33;
+    color: #28a745;
 }
 
 #delete:hover {
-    color: #ff3333;
+    color: #ff0000;
 }
 
 #favorite:hover {
-    color: #ffff60;
+    color: #ffd700;
 }
