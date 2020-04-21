@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h5 class="m-3 font-weight-normal">Favorites</h5>
+    <ul class="list-group list-group-flush">
+	{% for item in fav_list %}
+	    <li class="list-group-item">
+		<a class="text-decoration-none" data-toggle="collapse" href="#id{{ item.id}}" aria-expanded="false" aria-controls="id{{ item.id}}" style="color: #333;">
+		    <span class="mr-2">  <!-- dropdown icon -->
+			{% if item.description %}
+			    <svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+			    </svg>
+			{% else %}
+			    <svg class="bi bi-dash" width="1em" height="1em" viewBox="0 0 16 16" fill="grey" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+			    </svg>
+			{% endif %}
+		    </span>
+		    <span>{{ item.title }}</span>
+		</a>
+		<small data-toggle="tooltip" title="Go to list '{{ get_list_from_id(item.list_id).name }}'">
+		    <a class="text-muted" href="{{ url_for('show_list', id=item.list_id )}}" style="color:#333;">
+			{{ get_list_from_id(item.list_id).name }}
+		    </a>
+		</small>
+		<small class="text-muted ml-1" data-toggle="tooltip" data-placement="top" title="{{ item.date_posted.strftime('%X') }}">
+		    {{ item.date_posted.strftime('%x') }}
+		</small>
+		<form class="ml-2 float-right" method="POST" action="{{ url_for('toggle_favorite', id=item.id, re_to_fav='true') }}" id="form{{ item.id }}">
+		    <button class="button-hidden" form="form{{ item.id }}" type="submit">
+			<span id="favorite" data-toggle="tooltip" data-placement="top" title="Toggle Favorite">  <!-- star icon -->
+			    {% if item.favorite %}
+				<svg class="bi bi-star-fill" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+				</svg>
+			    {% else %}
+				<svg class="bi bi-star" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				    <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 00-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 00-.163-.505L1.71 6.745l4.052-.576a.525.525 0 00.393-.288l1.847-3.658 1.846 3.658a.525.525 0 00.393.288l4.052.575-2.906 2.77a.564.564 0 00-.163.506l.694 3.957-3.686-1.894a.503.503 0 00-.461 0z" clip-rule="evenodd"/>
+				</svg>
+			    {% endif %}
+			</span>
+		    </button>
+		</form>
+		<button type="button" class="ml-2 float-right button-hidden" id="edit" data-toggle="modal" data-target="#editItemModal">
+		    <span data-toggle="tooltip" data-placement="top" title="Edit Item">  <!-- pen icon -->
+			<svg class="bi bi-pencil" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			    <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
+			    <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
+			</svg>
+		    </span>
+		</button>
+		<form class="ml-2 float-right" method="POST" action="{{ url_for('delete_item', id=item.id, re_to_fav='true') }}" id="form2{{ item.id }}">
+		    <button class="button-hidden" form="form2{{ item.id }}" type="submit">
+			<span id="delete" data-toggle="tooltip" data-placement="top" title="Delete Item">  <!-- trash bin icon -->
+			    <svg class="bi bi-trash" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+				<path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
+			    </svg>
+			</span>
+		    </button>
+		</form>
+		{% if item.description %}
+		    <div class="collapse" id="id{{ item.id}}">
+			<p class="mt-3 mb-0">{{ item.description }}</p>
+		    </div>
+		{% endif %}
+		<div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="editItemModal" aria-hidden="true">
+		    <div class="modal-dialog model-dialog-centered" role="document">
+			<div class="modal-content">
+			    <div class="modal-body">
+				<h5 class="mt-2 mb-2 font-weight-normal modal-title text-center" id="editItemModal">Edit Item</h5>
+				<form method="POST" action="{{ url_for('edit_item', id=item.id, re_to_fav='true') }}">
+				    <div class="form-group">
+					<label for="title">Title</label>
+					<input class="form-control" type="text" name="title" id="title" value="{{ item.title }}">
+				    </div>
+				    <div class="form-group">
+					<label for="description">Description</label>
+					<textarea class="form-control" name="description" id="description" rows="2">{{ item.description }}</textarea>
+					<small class="form-text text-muted">Description is optional</small>
+				    </div>
+				    <div class="text-center">
+					<input class="btn btn-secondary m-1" type="button" value="Cancel" data-dismiss="modal">
+					<input class="btn btn-primary m-1" type="submit" value="Save Changes">
+				    </div>
+				</form>
+			    </div>
+			</div>
+		    </div>
+		</div></li>
+	    {% endfor %}
+    </ul>
+{% endblock %}

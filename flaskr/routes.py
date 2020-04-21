@@ -3,6 +3,14 @@ from flaskr import app, db
 from flaskr.models import List, Item
 
 
+def has_favorite():
+    items = Item.query.all()
+    for item in items:
+        if item.favorite:
+            return True
+    return False
+
+
 @app.route('/', methods=['GET'])
 def root():
     return redirect(url_for('home'))
@@ -12,15 +20,28 @@ def root():
 @app.route('/lists')
 def home():
     lists = List.query.all()
-    return render_template('home.html', lists=lists)
+    return render_template('home.html', lists=lists, show_fav=has_favorite())
 
 
-# show items of specific list
+# show specific list
 @app.route('/lists/<int:id>')
 def show_list(id):
     lists = List.query.all()
     selected_list = List.query.get_or_404(id)
-    return render_template('home.html', lists=lists, selected_list=selected_list)
+    return render_template('home.html', lists=lists, selected_list=selected_list, show_fav=has_favorite())
+
+
+# show favorite list
+@app.route('/lists/favorite')
+def favorite_list():
+    lists = List.query.all()
+    items = Item.query.all()
+    fav_list = []
+    if items:
+        for item in items:
+            if item.favorite:
+                fav_list.append(item)
+    return render_template('favorite.html', lists=lists, fav_list=fav_list, show_fav=has_favorite())
 
 
 @app.route('/lists', methods=['POST'])
@@ -60,30 +81,48 @@ def create_item(id):
     return redirect(url_for('show_list', id=id))
 
 
-@app.route('/lists/<int:id>/item/edit', methods=['POST'])
-def edit_item(id):
+@app.route('/lists/<int:id>/item/edit/<re_to_fav>', methods=['POST'])
+def edit_item(id, re_to_fav):
     item = Item.query.get_or_404(id)
     item.title = request.form.get('title').strip()
     item.description = request.form.get('description').strip()
     db.session.commit()
-    return redirect(url_for('show_list', id=item.list_id))
+    if re_to_fav == 'true':
+        if has_favorite():
+            return redirect(url_for('favorite_list'))
+        else:
+            return redirect(url_for('home'))
+    else:
+        return redirect(url_for('show_list', id=item.list_id))
 
 
-@app.route('/lists/<int:id>/item/delete', methods=['POST'])
-def delete_item(id):
+@app.route('/lists/<int:id>/item/delete/<re_to_fav>', methods=['POST'])
+def delete_item(id, re_to_fav):
     item = Item.query.get_or_404(id)
     list_id = item.list_id
     db.session.delete(item)
     db.session.commit()
-    return redirect(url_for('show_list', id=list_id))
+    if re_to_fav == 'true':
+        if has_favorite():
+            return redirect(url_for('favorite_list'))
+        else:
+            return redirect(url_for('home'))
+    else:
+        return redirect(url_for('show_list', id=item.list_id))
 
 
-@app.route('/lists/<int:id>/item/favorite', methods=['POST'])
-def toggle_favorite(id):
+@app.route('/lists/<int:id>/item/favorite/<re_to_fav>', methods=['POST'])
+def toggle_favorite(id, re_to_fav):
     item = Item.query.get_or_404(id)
     if item.favorite:
         item.favorite = False
     else:
         item.favorite = True
     db.session.commit()
-    return redirect(url_for('show_list', id=item.list_id))
+    if re_to_fav == 'true':
+        if has_favorite():
+            return redirect(url_for('favorite_list'))
+        else:
+            return redirect(url_for('home'))
+    else:
+        return redirect(url_for('show_list', id=item.list_id))
