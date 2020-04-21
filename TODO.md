@@ -9,6 +9,11 @@
 
     - [ ] Interactive dropdown icon
 
++ Sidebar
+
+    - [ ] Make mobile friendly
+    - [ ] Change sidebar nav to a better one
+
 - [x] Use RESTful route naming convention
 - [x] Display time correctly
 - [ ] Display time relatively
@@ -26,7 +31,9 @@
     + favorite list does not need to be saved to db
     + create new templates: 'list', 'favorite-list'
     + Show which list the item is from when displayed in the favorite list.
+    + When editing/deleting items from favorite list, redirect properly
 
+- [ ] Flash notification when creating, editing or deleting lists/items
 - [ ] Sort list by time posted
 - [ ] Add authentication
 - [ ] Make ui mobile-friendly
