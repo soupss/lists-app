@@ -19,7 +19,7 @@
 		    <span>{{ item.title }}</span>
 		</a>
 		<small data-toggle="tooltip" title="Go to list '{{ get_list_from_id(item.list_id).name }}'">
-		    <a class="text-muted" href="{{ url_for('show_list', id=item.list_id )}}" style="color:#333;">
+		    <a class="text-muted ml-1" href="{{ url_for('show_list', id=item.list_id )}}" style="color:#333;">
 			{{ get_list_from_id(item.list_id).name }}
 		    </a>
 		</small>

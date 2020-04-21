@@ -37,11 +37,12 @@
 - [ ] Add authentication
 - [ ] Make ui mobile-friendly
 
+    mostly sidebar, maybe proportion issues
+
 #### Final step
 
 - [ ] **Deploy!**
 
 ## Issues
 
-1. home.html is too long, split up in templates
-2. a lot of repeated code in html files
+1. a lot of repeated code in html files

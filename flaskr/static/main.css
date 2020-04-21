@@ -57,13 +57,21 @@ li.list-group-item:hover {
 }
 
 #edit:hover {
+    /* bootstrap success green */
     color: #28a745;
 }
 
 #delete:hover {
-    color: #ff0000;
+    /* red */
+    color: #ff0000; 
 }
 
 #favorite:hover {
+    /* gold */
     color: #ffd700;
+}
+
+#favorite:hover svg{
+    /* gold */
+    color: #ffd700 !important;
 }
