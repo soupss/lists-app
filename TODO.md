@@ -25,13 +25,12 @@
 
     'list_id' & 'item_id' instead of 'id'
 
-- [ ] Built-in "Favorites" list. Items signified with a star
+- [x] Built-in "Favorites" list. Items signified with a star
 
     + ~~List and item models currently have a one to many relationship. That needs to be changed.~~
-    + favorite list does not need to be saved to db
-    + create new templates: 'list', 'favorite-list'
-    + Show which list the item is from when displayed in the favorite list.
-    + When editing/deleting items from favorite list, redirect properly
+    + ^favorite list does not need to be saved to db. nothing needs to be saved, can do logic in view
+    - [x] Show which list the item is from when displayed in the favorite list.
+    - [x] When editing/deleting items from favorite list, redirect properly
 
 - [ ] Flash notification when creating, editing or deleting lists/items
 - [ ] Sort list by time posted
