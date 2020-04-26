@@ -54,11 +54,11 @@
 
     + List
 	
-	Bundles of Title + description
+	    Bundles of Title + description
 
     + Todo
 	
-	Add tasks with due dates that you can tick off, automatically move to "done" section of list
+	    Add tasks with due dates that you can tick off, automatically move to "done" section of list
 
 **- [ ] Add User Authentication with accounts**
 
