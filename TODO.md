@@ -23,7 +23,7 @@
     + '3 Days ago' instead of '04/20/20'
     + Display absolute time when item is older than 1 week
 
-- [ ] Better route variables. 
+- [x] Better route variables. 
 
     'list_id' & 'item_id' instead of 'id'
 
@@ -60,7 +60,7 @@
 	
 	    Add tasks with due dates that you can tick off, automatically move to "done" section of list
 
-**- [ ] Add User Authentication with accounts**
+- [ ] **Add User Authentication with accounts**
 
     Big feature. includes:
 

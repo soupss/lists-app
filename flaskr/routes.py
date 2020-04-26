@@ -71,14 +71,14 @@ def delete_list(id):
     return redirect(url_for('home'))
 
 
-@app.route('/lists/<int:id>', methods=['POST'])
-def create_item(id):
+@app.route('/lists/<int:list_id>', methods=['POST'])
+def create_item(list_id):
     title = request.form.get('title').strip()
-    description = request.form.get('description').strip()
-    item = Item(title=title, description=description, list_id=id)
+    description = request.form.get('description')
+    item = Item(title=title, description=description, list_id=list_id)
     db.session.add(item)
     db.session.commit()
-    return redirect(url_for('show_list', id=id))
+    return redirect(url_for('show_list', id=list_id))
 
 
 @app.route('/lists/<int:id>/item/edit/<re_to_fav>', methods=['POST'])
