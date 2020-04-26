@@ -1,3 +1,5 @@
+*i really need to organize this file*
+
 + Manipulate database from view
 
     - [x] Delete items
@@ -38,6 +40,25 @@
 - [ ] Make ui mobile-friendly
 
     mostly sidebar, maybe proportion issues
+
+- [ ] List group feature
+
+    sort lists in group, maybe make new group model? or just add group flag to list model
+
+- [ ] Dont remove whitespace in list description
+- [ ] Feature to move items from one list to another
+- [ ] Add icon. custom logo?
+- [ ] Todo list feature
+
+    When creating a list, choose list type.
+
+    + List
+	
+	Bundles of Title + description
+
+    + Todo
+	
+	Add tasks with due dates that you can tick off, automatically move to "done" section of list
 
 **- [ ] Add User Authentication with accounts**
 
