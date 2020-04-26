@@ -17,7 +17,7 @@ class Item(db.Model):
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
     date_posted = db.Column(db.DateTime(), nullable=False,
-                            default=datetime.utcnow)
+                            default=datetime.now)
     favorite = db.Column(db.Boolean, nullable=False,
                          server_default=expression.false())
     list_id = db.Column(db.Integer, db.ForeignKey('list.id'), nullable=False)

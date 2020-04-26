@@ -89,8 +89,8 @@
 			    </span>
 			    <span>{{ item.title }}</span>
 			</a>
-			<small class="ml-1 text-muted" data-toggle="tooltip" data-placement="top" title="{{ item.date_posted.strftime('%X') }}">
-			    {{ item.date_posted.strftime('%x') }}
+			<small class="ml-1 text-muted" data-toggle="tooltip" data-placement="top" title="{{ get_datetime_diff(item.id) }}">
+			    {{ item.date_posted.strftime('%x (%A) %X') }}
 			</small>
 			<form class="ml-2 float-right" method="POST" action="{{ url_for('toggle_favorite', id=item.id, re_to_fav='false') }}" id="form{{ item.id }}">
 			    <button class="button-hidden" form="form{{ item.id }}" type="submit">
@@ -160,7 +160,7 @@
 		    <div class="alert alert-primary m-3" role="alert">This list is empty</div>
 		{% endif %}
 	</ul>
-	<form method="POST" action="{{ url_for('create_item', id=selected_list.id) }}">
+	<form method="POST" action="{{ url_for('create_item', list_id=selected_list.id) }}">
 	    <p>
 		<button class="btn btn-primary m-3" type="button" data-toggle="modal" data-target="#createItemModal">
 		    <svg class="bi bi-file-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
