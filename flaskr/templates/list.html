@@ -89,8 +89,8 @@
 			    </span>
 			    <span>{{ item.title }}</span>
 			</a>
-			<small class="ml-1 text-muted" data-toggle="tooltip" data-placement="top" title="{{ get_datetime_diff(item.id) }}">
-			    {{ item.date_posted.strftime('%x (%A) %X') }}
+			<small class="ml-1 text-muted" data-toggle="tooltip" data-placement="top" title="{{ item.date_posted.strftime('%b %d, %Y (a %A) %X %Z') }}">
+			    {{ pretty_reldate(item.date_posted) }}
 			</small>
 			<form class="ml-2 float-right" method="POST" action="{{ url_for('toggle_favorite', id=item.id, re_to_fav='false') }}" id="form{{ item.id }}">
 			    <button class="button-hidden" form="form{{ item.id }}" type="submit">
