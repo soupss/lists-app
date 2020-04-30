@@ -1,6 +1,6 @@
 ### ToDo
 
-- Manipulate database from view
++ Manipulate database from view
 
     - [x] Delete items
     - [x] Delete lists
@@ -12,24 +12,23 @@
 - [x] Display time relatively
 - [x] Better route variables. 
 
-- [x] Built-in "Favorites" list. Items signified with a star
++ Built-in "Favorites" list. Items signified with a star
 
-    + ~~List and item models currently have a one to many relationship. That needs to be changed.~~
-    + ^favorite list does not need to be saved to db. nothing needs to be saved, can do logic in view
+    + logic handled in view
     - [x] Show which list the item is from when displayed in the favorite list.
     - [x] When editing/deleting items from favorite list, redirect properly
 
-- Better navs
++ Better navs
 
-    - Top nav
+    + Top nav
 
-	- [ ] Login and register link
-	- [ ] Toggle side nav with top left logo
+	    - [ ] Login and register link
+	    - [ ] Toggle side nav with top left logo
 
-    - Side nav
+    + Side nav
 
-	- [ ] Toggleable from top nav
-	- [ ] Fix sizing issues on different viewports
+	    - [ ] Toggleable from top nav
+	    - [ ] Fix sizing issues on different viewports
 
 - [ ] **Register/login accounts feature** (user auth)
 - [ ] Mobile friendly
@@ -38,7 +37,7 @@
 ##### fixes and new features
 
 - [ ] Dont remove whitespace in list description
-- Sorting
++ Sorting
 
     - [ ] Sort lists alphabetically, time posted
     - [ ] Sort items alphabetically, time posted, favorite flag
