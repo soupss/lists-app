@@ -1,27 +1,16 @@
-*i really need to organize this file*
+### ToDo
 
-+ Manipulate database from view
+- Manipulate database from view
 
     - [x] Delete items
     - [x] Delete lists
     - [x] Rename lists
     - [x] Change item title and description
 
-+ Style
-
-    - [ ] Interactive dropdown icon
-
-+ Sidebar
-
-    - [ ] Make mobile friendly
-    - [ ] Change sidebar nav to a better one
-
 - [x] Use RESTful route naming convention
 - [x] Display time correctly
 - [x] Display time relatively
 - [x] Better route variables. 
-
-    'list_id' & 'item_id' instead of 'id'
 
 - [x] Built-in "Favorites" list. Items signified with a star
 
@@ -30,43 +19,33 @@
     - [x] Show which list the item is from when displayed in the favorite list.
     - [x] When editing/deleting items from favorite list, redirect properly
 
-- [ ] Flash notification when creating, editing or deleting lists/items
-- [ ] Sort list by time posted
-- [ ] Add authentication
-- [ ] Make ui mobile-friendly
+- Better navs
 
-    mostly sidebar, maybe proportion issues
+    - Top nav
 
-- [ ] List group feature
+	- [ ] Login and register link
+	- [ ] Toggle side nav with top left logo
 
-    sort lists in group, maybe make new group model? or just add group flag to list model
+    - Side nav
+
+	- [ ] Toggleable from top nav
+	- [ ] Fix sizing issues on different viewports
+
+- [ ] **Register/login accounts feature** (user auth)
+- [ ] Mobile friendly
+- [ ] Add icon. custom logo?
+
+##### fixes and new features
 
 - [ ] Dont remove whitespace in list description
+- Sorting
+
+    - [ ] Sort lists alphabetically, time posted
+    - [ ] Sort items alphabetically, time posted, favorite flag
+
 - [ ] Feature to move items from one list to another
-- [ ] Add icon. custom logo?
-- [ ] Todo list feature
+- [ ] Feedback (flash notification) when creating list, editing item, loggin in etc. ie. more responsive
 
-    When creating a list, choose list type.
+##### Final Step
 
-    + List
-	
-	    Bundles of Title + description
-
-    + Todo
-	
-	    Add tasks with due dates that you can tick off, automatically move to "done" section of list
-
-- [ ] **Add User Authentication with accounts**
-
-    Big feature. includes:
-
-    + register + login
-    + request a new password
-
-#### Final step
-
-- [ ] **Deploy!**
-
-## Issues
-
-1. a lot of repeated code in html files
+- [ ] Deploy!! :)
