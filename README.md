@@ -11,8 +11,9 @@ Lists is just a way to organize the items. Example of list names:
 
 ## Base Features
 
-+ private use website
-+ some kind of authorization
+~+ private use website~
+~+ some kind of authorization~
++ user accounts authentication system
 + mobile first
 + item title and optional item description
 
